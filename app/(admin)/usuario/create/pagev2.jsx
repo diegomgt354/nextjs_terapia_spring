@@ -2,18 +2,25 @@
 
 import BaseButton from '@/components/shared/BaseButton'
 import BaseInput from '@/components/shared/BaseInput'
+import BaseInputv2 from '@/components/shared/BaseInputv2'
 import BaseSelect from '@/components/shared/BaseSelect'
+import BaseSelectv2 from '@/components/shared/BaseSelectv2'
+import BaseTextArea from '@/components/shared/BaseTextArea'
 import BaseToggleSwitch from '@/components/shared/BaseToggleSwitch'
+import BaseToggleSwitchv2 from '@/components/shared/BaseToggleSwitchv2'
 import TerapeutaService from '@/services/TerapeutaService'
 import UsuarioService from '@/services/UsuarioService'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { TbChevronLeft } from 'react-icons/tb'
 
 const UsuarioCreate = ({ params }) => {
 
     const { id } = params
+
+    const { register, handleSubmit } = useForm();
 
     const route = useRouter()
 
@@ -41,16 +48,18 @@ const UsuarioCreate = ({ params }) => {
         setForm({ ...form, [name]: value })
     }
 
-    const saveUsuario = (event) => {
-        event.preventDefault();
-        try {
-            UsuarioService.saveUsuario(JSON.stringify(form))
-                .catch(error => console.log("error: " + error));
-            route.push('/usuario')
-            setForm(INITIAL_FORM_VALUE);
-        } catch (error) {
-            console.log(error);
-        }
+    const saveUsuario = async (event) => {
+        // event.preventDefault();
+        console.log("ddsdsdsd")
+        console.log(event)
+        // try {
+        //     UsuarioService.saveUsuario(JSON.stringify(form))
+        //         .catch(error => console.log("error: " + error));
+        //     route.push('/usuario')
+        //     setForm(INITIAL_FORM_VALUE);
+        // } catch (error) {
+        //     console.log(error);
+        // }
 
     }
 
@@ -69,40 +78,46 @@ const UsuarioCreate = ({ params }) => {
             </Link>
 
             <div className="text-3xl font-bold text-center mt-10 mb-4">Agregar Usuario</div>
-            <form className="max-w-sm mx-auto" onSubmit={(e) => saveUsuario(e)}>
+            <form className="max-w-sm mx-auto" onSubmit={handleSubmit(saveUsuario)}>
 
-                <BaseInput
+                <BaseInputv2
                     type='email'
                     label="Email"
                     placeholder="Email"
                     name="email"
-                    onChange={handleChange}
-                    value={form.email}
+                    // onChange={handleChange}
+                    // value={form.email}
+                    register={register}
+                    required
                 />
 
-                <BaseInput
+                <BaseInputv2
                     label="Password"
                     name="password"
                     placeholder={'Password'}
-                    onChange={handleChange}
-                    value={form.password}
+                    // onChange={handleChange}
+                    // value={form.password}
+                    register={register}
+                    required
                 />
 
-                <BaseSelect
+                <BaseSelectv2
                     label="Terapeuta"
                     name="terapeuta"
                     onChange={handleChange}
-                    value={form.terapeuta}
+                    // value={form.terapeuta}
+                    register={register}
                     options={terapeutas}
-                    selected={form.terapeuta}
+                // selected={form.terapeuta}
                 />
 
-                <BaseToggleSwitch
+                <BaseToggleSwitchv2
                     value={form.rol}
                     name='rol'
                     label="Administrador"
-                    valueActivate="ADMIN"
-                    onChange={handleChangeUser}
+                    // valueActivate="ADMIN"
+                    register={register}
+                // onChange={handleChangeUser}
                 />
 
                 <BaseButton

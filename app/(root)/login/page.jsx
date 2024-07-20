@@ -79,7 +79,7 @@ const LoginPage = () => {
 
             </div>
 
-            <div>{JSON.stringify(form, null, 2)}</div>
+            {/* <div>{JSON.stringify(form, null, 2)}</div> */}
             {/* <div>{JSON.stringify(usuario, null, 2)}</div> */}
 
         </>

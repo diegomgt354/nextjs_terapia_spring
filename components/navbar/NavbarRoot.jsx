@@ -31,7 +31,7 @@ const NavbarRoot = () => {
                             <a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 ">Nosotros</a>
                         </li>
                         <li>
-                            <a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 ">Servicios</a>
+                            <Link href={"/disponibles"} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 ">Nuestros Servicios</Link>
                         </li>
                         <li>
                             <Link href={"/newConsulta"} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Contactanos</Link>

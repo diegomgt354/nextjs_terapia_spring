@@ -108,7 +108,7 @@ const NewConsultaPage = () => {
 
             </form>
 
-            <div>{JSON.stringify(form, null, 2)}</div>
+            {/* <div>{JSON.stringify(form, null, 2)}</div> */}
 
         </>
     )
